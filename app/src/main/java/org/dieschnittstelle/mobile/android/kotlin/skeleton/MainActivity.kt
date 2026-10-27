@@ -1,9 +1,11 @@
 package org.dieschnittstelle.mobile.android.kotlin.skeleton
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -21,7 +23,7 @@ class MainActivity : ComponentActivity() {
             MADDemoTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "MAD",
+                        name = "MAD WS26",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -32,9 +34,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
+    var usename = name
+    var logger = "Greeting"
     Text(
         text = "Hello $name!",
-        modifier = modifier
+        modifier = modifier.clickable{
+            usename +=(" " + usename)
+            Log.i(logger, "username is now: $usename")
+        }
     )
 }
 
